@@ -2,10 +2,12 @@ var BoloGame = function(fps, images, runCallback) {
     // images 是一个数组，里面是图片的引用名字和路径
     // 程序会在所有图片载入成功后才运行
     var g = {
+        scene: null,
         actions: {},
         keydowns: {},
         images: {}
     }
+
     var canvas = document.querySelector('#id-canvas')
     var context = canvas.getContext('2d')
     g.canvas = canvas
@@ -26,6 +28,17 @@ var BoloGame = function(fps, images, runCallback) {
         g.keydowns[event.key] = false
     })
 
+    // update
+    g.update = function() {
+        // log('g.scene:', g.scene)
+        g.scene.update()
+    }
+
+    // draw
+    g.draw = function() {
+        g.scene.draw()
+    }
+
     //
     g.registerAction = function(key, callback) {
         g.actions[key] = callback
@@ -45,6 +58,8 @@ var BoloGame = function(fps, images, runCallback) {
         }
 
         // update
+        // 如果存在 g.update 则调用
+        // g.update && g.update()
         g.update()
 
         // clear
@@ -73,7 +88,7 @@ var BoloGame = function(fps, images, runCallback) {
             // 所有图片都成功载入之后，调用 run
             loads.push(1)
             if (loads.length == names.length) {
-                g.run()
+                g.__start()
             }
         }
     }
@@ -88,12 +103,21 @@ var BoloGame = function(fps, images, runCallback) {
         return image
     }
 
-    g.run = function() {
-        runCallback(g)
+    g.runWithScene = function(scene) {
+        g.scene = scene
         // 开始运行程序
         setTimeout(function(){
             runloop()
         }, 1000/fps)
     }
+
+    g.replaceScene = function(scene) {
+        g.scene = scene
+    }
+
+    g.__start = function(scene) {
+        runCallback(g)
+    }
+
     return g
 }
