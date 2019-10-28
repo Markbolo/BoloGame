@@ -12,7 +12,7 @@ var Ball = function(game) {
     // }
 
     o.x = 180
-    o.y = 254
+    o.y = 229
     o.width = 31
     o.height = 31
     o.speedX = 10
@@ -41,6 +41,12 @@ var Ball = function(game) {
     o.reverse = function() {
         // X 轴的反弹暂时还不生效
         o.speedY *= -1
+    }
+
+    o.hasPoint = function(x, y) {
+        var xIn = x >= o.x && x <= o.x + o.w
+        var yIn = y >= o.y && y <= o.y + o.h
+        return xIn && yIn
     }
     return o
 }

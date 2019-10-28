@@ -7,15 +7,15 @@ var Paddle = function(game) {
     //     speed: 10,
     // }
     o.x = 150
-    o.y = 285
+    o.y = 260  
     o.speed = 15
     var paddle = o
     o.move = function(x) {
         if (x < 0) {
             x = 0
         }
-        if (o.x > 400 - o.image.width) {
-            x = 400 - o.image.width
+        if (o.x > 400 - o.w) {
+            x = 400 - o.w
         }
         o.x = x
     }
@@ -36,15 +36,27 @@ var Paddle = function(game) {
         // }
     }
 
+    var aInb = function(x, x1, x2) {
+        return x >= x1 && x <= x2
+    }
+
     o.collide = function(ball) {
-        if (ball.y + ball.height > o.y && ball.y + ball.height < o.y + o.image.height) {
-            if (ball.x + ball.width > o.x && ball.x < o.x + o.image.width) {
-                log('相撞')
+        // if (ball.y + ball.h > o.y && ball.y + ball.h < o.y + o.h) {
+        //     if (ball.x + ball.w > o.x && ball.x < o.x + o.w) {
+        //         log('相撞')
+        //         return true
+        //     } 
+        // } else {
+        //     return false
+        // }
+        var a = o
+        var b = ball
+        if (aInb(a.x, b.x, b.x + b.w) || aInb(b.x, a.x, a.x + a.w)) {
+            if (aInb(a.y, b.y, b.y + b.h) || aInb(b.y, a.y, a.y + a.h)) {
                 return true
-            } 
-        } else {
-            return false
+            }
         }
+        return false
     }
 
     return o

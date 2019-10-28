@@ -22,7 +22,7 @@ var BoloGame = function(fps, images, runCallback) {
     })
 
     window.addEventListener('keyup', function(event){
-        log('event.key:', event.key)
+        // log('event.key:', event.key)
         g.keydowns[event.key] = false
     })
 

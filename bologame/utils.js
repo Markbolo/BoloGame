@@ -1,8 +1,10 @@
-// var log = console.log.bind(console)
+var log = console.log.bind(console)
 // var e = sel => document.querySelector(sel)
-var log = function(s) {
-    document.querySelector('#id-text-log').value += '\n' + s
-}
+
+// 在 textarea 显示 log
+// var log = function(s) {
+//     document.querySelector('#id-text-log').value += '\n' + s
+// }
 
 var imageFromPath = function(path) {
     var img = new Image()
