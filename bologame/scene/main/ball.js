@@ -12,7 +12,7 @@ var Ball = function(game) {
     // }
 
     o.x = 180
-    o.y = 229
+    o.y = 225
     o.width = 31
     o.height = 31
     o.speedX = 10

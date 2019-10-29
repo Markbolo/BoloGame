@@ -50,7 +50,7 @@ var __main = function() {
     }
 
     var game = BoloGame(30, images, function(g){
-        var s = Scene(g)
+        var s = SceneTitle.new(g)
         g.runWithScene(s)
     }) 
 

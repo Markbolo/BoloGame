@@ -21,6 +21,8 @@ var Scene = function(game) {
         // 发射球
         ball.fire()
     })
+    
+
 
     s.draw = function() {
         // draw 背景
@@ -50,9 +52,9 @@ var Scene = function(game) {
 
         // 判断游戏结束
         if (ball.y > paddle.y) {
-            console.log('结束游戏...')
+            // console.log('结束游戏...')
             // 跳转到游戏结束的场景
-            var end = SceneEnd(game)
+            var end = SceneEnd.new(game)
             game.replaceScene(end)
         }   
 

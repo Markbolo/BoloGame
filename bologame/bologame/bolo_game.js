@@ -5,7 +5,7 @@ var BoloGame = function(fps, images, runCallback) {
         scene: null,
         actions: {},
         keydowns: {},
-        images: {}
+        images: {},
     }
 
     var canvas = document.querySelector('#id-canvas')
