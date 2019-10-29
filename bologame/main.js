@@ -49,7 +49,7 @@ var __main = function() {
         paddle: 'img/board.png',
     }
 
-    var game = BoloGame(30, images, function(g){
+    var game = BoloGame.instance(30, images, function(g) {
         var s = SceneTitle.new(g)
         g.runWithScene(s)
     }) 
